@@ -1,4 +1,4 @@
-# Project-Luther
+# Project-Luther blue blue blue blue bleh bleh bleh
 
 ## Situation
 Metis Films, a movie production company, is about to release a film titled "Luther" in July 2016. However, they found out that there will be a number of similar movies that will be released in the same month ("density"). Metis took out a high-yield debt to fund the production and is worried that the competition might affect its box office sales and be unable to pay back the debt. The alternative is to delay the release of the film, but this would delay box office cash flows that will be used to pay the interest.
