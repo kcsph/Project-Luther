@@ -9,10 +9,10 @@ The managers at Metis Films reached out to McKennSo, a consultancy, to help them
 Given the time limits (and budgetary constraints), McKennSo decided to scrape the web for data and perform a linear regression to determine whether density will materially affect Luther's box office revenues.
 
 ## Data & Assumptions
-Data: Movies from 2011-2015 
-Movie webpages scraped: ~3,500
-Features/Calculated Variables: Movie density within a week and month by same genre and number of high budget production films
-Data Munging: Through preliminary analysis, budget is the strongest (statistically significant) predictor of box office revenues. As such, only movies with domestic box office gross and production budget of more than US$1 million are included
+Data: Movies from 2011-2015  
+Movie webpages scraped: ~3,500  
+Features/Calculated Variables: Movie density within a week and month by same genre and number of high budget production films  
+Data Munging: Through preliminary analysis, budget is the strongest (statistically significant) predictor of box office revenues. As such, only movies with domestic box office gross and production budget of more than US$1 million are included  
 Final Data Set # of Observations: ~600
 
 ## Model
