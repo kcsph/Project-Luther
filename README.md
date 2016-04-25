@@ -18,7 +18,7 @@ Given the time limits (and budgetary constraints), Metis decided to scrape the w
 
 ## Model
 The goal is to focus on the value and statistical significance of movie density. 
-Domestic Box Office Gross (Adj. 2015)  = Budget + Genre + Distributor + Days in Release + Week Genre Density + Month Genre Density + Week High Budget Density + Month High Budget Density  
+Domestic Box Office Gross (Adj. 2015)  = Budget + Genre + Distributor + Days in Release + Month Genre Density + Month High Budget Density  
   
 <table class="simpletable">
 <caption>OLS Regression Results</caption>
