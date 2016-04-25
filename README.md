@@ -13,7 +13,7 @@ Given the time limits (and budgetary constraints), Metis decided to scrape the w
 *Data Source*: Boxofficemojo  
 *Webpages scraped*: ~3,500  
 *Features*: Movie density within a week and month by same genre and number of high budget production films  
-*Filters*: Through preliminary analysis, budget is the strongest (statistically significant) predictor of box office revenues. As such, only movies with domestic box office gross and production budget of more than US$1 million are included. Removed foreign films(naively) by filtering out 'Foreign' genre. Also naively dropped all null values. Dropped all movies with domestic gross of over US$600 million (domestic blockbusters), there's less than 5 movies that are blockbusters.
+*Filters*: Through preliminary analysis, budget is the strongest (statistically significant) predictor of box office revenues. As such, only movies with domestic box office gross and production budget of more than US$1 million are included. Removed foreign films(naively) by filtering out 'Foreign' genre. Also naively dropped all null values. Dropped all movies with domestic gross of over US$600 million (domestic blockbusters), there's less than 5 movies that are blockbusters.  
 *Final Data Set # of Observations*: ~500
 
 ## Model
