@@ -13,7 +13,7 @@ Given the time limits (and budgetary constraints), MKS decided to scrape the web
 *Data Source*: Boxofficemojo  
 *Webpages scraped*: ~3,500  
 *Features*: Movie density within a week and month by same genre and number of high budget production films  
-*Data Munging*: Through preliminary analysis, budget is the strongest (statistically significant) predictor of box office revenues. As such, only movies with domestic box office gross and production budget of more than US$1 million are included  
+*Filters*: Through preliminary analysis, budget is the strongest (statistically significant) predictor of box office revenues. As such, only movies with domestic box office gross and production budget of more than US$1 million are included. Removed foreign films(naively) by filtering out 'Foreign' genre.     
 *Final Data Set # of Observations*: ~600
 
 ## Model
@@ -26,6 +26,7 @@ fit1.summary()
 ```
   
 ## Results  
+The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$5 million. MKS recommends Metis management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt. 
 <table class="simpletable">
 <caption>OLS Regression Results</caption>
 <tr>
