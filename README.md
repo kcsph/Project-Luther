@@ -1,9 +1,9 @@
 # Project Luther (WIP)
 
 ## Situation
-Metis Films, a movie production company, is about to release a film titled "Luther" in July 2016. However, they found out that there will be a number of similar movies that will be released in the same month ("density"). Metis took out a high-yield debt to fund the production and is worried that the competition might affect its box office sales and be unable to pay back the debt. The alternative is to delay the release of the film, but this would delay box office cash flows that will be used to pay the interest.
+Luther Films, a movie production company, is about to release a film in July 2016. However, they found out that there will be a number of similar movies that will be released in the same month ("density"). Luther took out a high-yield debt to fund the production and is worried that the competition might affect its box office sales and be unable to pay back the debt. The alternative is to delay the release of the film, but this would delay box office cash flows that will be used to pay the interest.
 
-The managers at Metis Films reached out to McKennSo (MKS), a consultancy, to help them on this issue. With a board meeting in two days, the Metis managemet asked MKS to come back with a recommendation by the next day. 
+The managers at Luther Films reached out to Metis to help them on this issue. With a board meeting in two days, the Luther managemet asked MKS to come back with a recommendation by the next day. 
 
 ## Methodology
 Given the time limits (and budgetary constraints), MKS decided to scrape the web for data and perform a linear regression to determine whether density will materially affect Luther's box office revenues.
@@ -238,7 +238,7 @@ Domestic Box Office Gross (Adj. 2015)  = Budget + Genre + Distributor + Days in 
 </tr>
 </table>
   
-The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$4-5 million. MKS recommends Metis management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt.   
+The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$4-5 million. Metis recommends Luther management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt.   
 
 ##Next Steps 
 1. Do exploratory data anlysis to: (1) adjust data filters, (2) check correlation and pair plots for directional relationship and fucntional forms  
