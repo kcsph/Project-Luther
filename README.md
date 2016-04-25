@@ -26,7 +26,6 @@ fit1.summary()
 ```
   
 ## Results  
-The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$5 million. MKS recommends Metis management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt. 
 <table class="simpletable">
 <caption>OLS Regression Results</caption>
 <tr>
@@ -280,5 +279,10 @@ The 'Month Genre Density' has a statistically significant (p>0.05) effect on dom
   <th>Kurtosis:</th>      <td>36.868</td>  <th>  Cond. No.          </th> <td>1.69e+18</td> 
 </tr>
 </table>
+  
+The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$5 million. MKS recommends Metis management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt.   
 
-
+##Next Steps 
+1. Do exploratory data anlysis to: (1) adjust data filters, (2) check correlation and pair plots for directional relationship and fucntional forms  
+2. Refine model
+3. If there's time, explore other uses of the model (prediction)
