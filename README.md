@@ -13,19 +13,14 @@ Given the time limits (and budgetary constraints), MKS decided to scrape the web
 *Data Source*: Boxofficemojo  
 *Webpages scraped*: ~3,500  
 *Features*: Movie density within a week and month by same genre and number of high budget production films  
-*Filters*: Through preliminary analysis, budget is the strongest (statistically significant) predictor of box office revenues. As such, only movies with domestic box office gross and production budget of more than US$1 million are included. Removed foreign films(naively) by filtering out 'Foreign' genre.     
-*Final Data Set # of Observations*: ~600
+*Filters*: Through preliminary analysis, budget is the strongest (statistically significant) predictor of box office revenues. As such, only movies with domestic box office gross and production budget of more than US$1 million are included. Removed foreign films(naively) by filtering out 'Foreign' genre. Also naively dropped all null values.     
+*Final Data Set # of Observations*: ~500
 
 ## Model
 The goal is to focus on the value and statistical significance of movie density. 
-Domestic Box Office Gross (Adj. 2015)  = Budget + Genre + Distributor + Days in Release + Week Genre Density + Month Genre Density + Week High Budget Density + Month High Budget Density   
-```python
-lm1 = smf.ols('dom_gross_adj_2015 ~ budget + genre + distributor + in_release_days + week_genre_density_count + month_genre_density_count + week_budget_density_count + month_budget_density_count',data=DF3)
-fit1 = lm1.fit()
-fit1.summary()
-```
+Domestic Box Office Gross (Adj. 2015)  = Budget + Genre + Distributor + Days in Release + Week Genre Density + Month Genre Density + Week High Budget Density + Month High Budget Density  
   
-## Results  
+
 <table class="simpletable">
 <caption>OLS Regression Results</caption>
 <tr>
@@ -278,9 +273,9 @@ fit1.summary()
 <tr>
   <th>Kurtosis:</th>      <td>36.868</td>  <th>  Cond. No.          </th> <td>1.69e+18</td> 
 </tr>
-</table>
+</table>  
   
-The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$5 million. MKS recommends Metis management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt.   
+The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$4-5 million. MKS recommends Metis management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt.   
 
 ##Next Steps 
 1. Do exploratory data anlysis to: (1) adjust data filters, (2) check correlation and pair plots for directional relationship and fucntional forms  
