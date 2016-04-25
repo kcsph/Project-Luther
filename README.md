@@ -6,7 +6,7 @@ Luther Films, a movie production company, is about to release a film in July 201
 The managers at Luther Films reached out to Metis to help them on this issue. With a board meeting in two days, the Luther managemet asked Metis to come back with a recommendation by the next day. 
 
 ## Methodology
-Given the time limits (and budgetary constraints), MKS decided to scrape the web for data and perform a linear regression to determine whether density will materially affect Luther's box office revenues.
+Given the time limits (and budgetary constraints), Metis decided to scrape the web for data and perform a linear regression to determine whether density will materially affect Luther's box office revenues.
 
 ## Data & Assumptions
 *Data*: Movies from 2011-2015  
