@@ -238,7 +238,7 @@ The goal is to focus on the value and statistical significance of movie density.
 </tr>
 </table>
   
-The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$4-5 million. Metis recommends Luther management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt.   
+The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$4-5 million for every additional "density" count. Metis recommends Luther management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt.   
 
 ##Next Steps 
 1. Revisit data filters  
