@@ -241,6 +241,7 @@ Domestic Box Office Gross (Adj. 2015)  = Budget + Genre + Distributor + Days in 
 The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$4-5 million. Metis recommends Luther management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt.   
 
 ##Next Steps 
-1. Do exploratory data anlysis to: (1) adjust data filters, (2) check correlation and pair plots for directional relationship and fucntional forms  
-2. Refine model
-3. If there's time, explore other uses of the model (prediction)
+1. Revisit data filters  
+2. Do a bit more exploratory data analysis  
+3. Try different functional forms  
+4. If there's time, explore other uses of the model (prediction)
