@@ -1,51 +1,50 @@
 # Project Luther (WIP)
 
 ## Situation
-Metis Films, a movie production company, is about to release a film titled "Luther" in July 2016. However, they found out that there will be a number of similar movies that will be released in the same month ("density"). Metis took out a high-yield debt to fund the production and is worried that the competition might affect its box office sales and be unable to pay back the debt. The alternative is to delay the release of the film, but this would delay box office cash flows that will be used to pay the interest.
+Luther Films, a movie production company, is about to release a film in July 2016. However, they found out that there will be a number of similar movies that will be released in the same month ("density"). Luther took out a high-yield debt to fund the production and is worried that the competition might affect its box office sales and be unable to pay back the debt. The alternative is to delay the release of the film, but this would delay box office cash flows that will be used to pay the interest.
 
-The managers at Metis Films reached out to McKennSo (MKS), a consultancy, to help them on this issue. With a board meeting in two days, the Metis managemet asked MKS to come back with a recommendation by the next day. 
+The managers at Luther Films reached out to Metis to help them on this issue. With a board meeting in two days, the Luther managemet asked Metis to come back with a recommendation by the next day. 
 
 ## Methodology
-Given the time limits (and budgetary constraints), MKS decided to scrape the web for data and perform a linear regression to determine whether density will materially affect Luther's box office revenues.
+Given the time limits (and budgetary constraints), Metis decided to scrape the web for data and perform a linear regression to determine whether density will materially affect Luther's box office revenues.
 
 ## Data & Assumptions
 *Data*: Movies from 2011-2015  
 *Data Source*: Boxofficemojo  
 *Webpages scraped*: ~3,500  
 *Features*: Movie density within a week and month by same genre and number of high budget production films  
-*Filters*: Through preliminary analysis, budget is the strongest (statistically significant) predictor of box office revenues. As such, only movies with domestic box office gross and production budget of more than US$1 million are included. Removed foreign films(naively) by filtering out 'Foreign' genre. Also naively dropped all null values.     
+*Filters*: Through preliminary analysis, budget is the strongest (statistically significant) predictor of box office revenues. As such, only movies with domestic box office gross and production budget of more than US$1 million are included. Removed foreign films(naively) by filtering out 'Foreign' genre. Also naively dropped all null values. Dropped all movies with domestic gross of over US$600 million (domestic blockbusters), there's less than 5 movies that are blockbusters.  
 *Final Data Set # of Observations*: ~500
 
 ## Model
-The goal is to focus on the value and statistical significance of movie density. 
-Domestic Box Office Gross (Adj. 2015)  = Budget + Genre + Distributor + Days in Release + Week Genre Density + Month Genre Density + Week High Budget Density + Month High Budget Density  
-  
+The goal is to focus on the value and statistical significance of movie density.  
+**Domestic Box Office Gross (Adj. 2015)  = Budget + Genre + Distributor + Days in Release + Month Genre Density + Month High Budget Density**  
 
 <table class="simpletable">
 <caption>OLS Regression Results</caption>
 <tr>
-  <th>Dep. Variable:</th>    <td>dom_gross_adj_2015</td> <th>  R-squared:         </th> <td>   0.642</td>
+  <th>Dep. Variable:</th>    <td>dom_gross_adj_2015</td> <th>  R-squared:         </th> <td>   0.693</td>
 </tr>
 <tr>
-  <th>Model:</th>                    <td>OLS</td>        <th>  Adj. R-squared:    </th> <td>   0.593</td>
+  <th>Model:</th>                    <td>OLS</td>        <th>  Adj. R-squared:    </th> <td>   0.655</td>
 </tr>
 <tr>
-  <th>Method:</th>              <td>Least Squares</td>   <th>  F-statistic:       </th> <td>   12.94</td>
+  <th>Method:</th>              <td>Least Squares</td>   <th>  F-statistic:       </th> <td>   18.32</td>
 </tr>
 <tr>
-  <th>Date:</th>              <td>Sun, 24 Apr 2016</td>  <th>  Prob (F-statistic):</th> <td>1.64e-71</td>
+  <th>Date:</th>              <td>Mon, 25 Apr 2016</td>  <th>  Prob (F-statistic):</th> <td>2.75e-82</td>
 </tr>
 <tr>
-  <th>Time:</th>                  <td>12:31:22</td>      <th>  Log-Likelihood:    </th> <td> -2940.8</td>
+  <th>Time:</th>                  <td>13:39:53</td>      <th>  Log-Likelihood:    </th> <td> -2565.6</td>
 </tr>
 <tr>
-  <th>No. Observations:</th>       <td>   543</td>       <th>  AIC:               </th> <td>   6016.</td>
+  <th>No. Observations:</th>       <td>   493</td>       <th>  AIC:               </th> <td>   5241.</td>
 </tr>
 <tr>
-  <th>Df Residuals:</th>           <td>   476</td>       <th>  BIC:               </th> <td>   6304.</td>
+  <th>Df Residuals:</th>           <td>   438</td>       <th>  BIC:               </th> <td>   5472.</td>
 </tr>
 <tr>
-  <th>Df Model:</th>               <td>    66</td>       <th>                     </th>     <td> </td>   
+  <th>Df Model:</th>               <td>    54</td>       <th>                     </th>     <td> </td>   
 </tr>
 <tr>
   <th>Covariance Type:</th>       <td>nonrobust</td>     <th>                     </th>     <td> </td>   
@@ -53,231 +52,196 @@ Domestic Box Office Gross (Adj. 2015)  = Budget + Genre + Distributor + Days in 
 </table>
 <table class="simpletable">
 <tr>
-                     <td></td>                       <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th> <th>[95.0% Conf. Int.]</th> 
+                 <td></td>                    <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th> <th>[95.0% Conf. Int.]</th> 
 </tr>
 <tr>
-  <th>Intercept</th>                              <td>  -80.0826</td> <td>   31.095</td> <td>   -2.575</td> <td> 0.010</td> <td> -141.183   -18.982</td>
+  <th>Intercept</th>                       <td> -124.7355</td> <td>   49.429</td> <td>   -2.524</td> <td> 0.012</td> <td> -221.884   -27.587</td>
 </tr>
 <tr>
-  <th>genre[T.Adventure]</th>                     <td>  -71.1888</td> <td>   24.445</td> <td>   -2.912</td> <td> 0.004</td> <td> -119.223   -23.155</td>
+  <th>genre[T.Adventure]</th>              <td>  -70.1235</td> <td>   20.853</td> <td>   -3.363</td> <td> 0.001</td> <td> -111.107   -29.140</td>
 </tr>
 <tr>
-  <th>genre[T.Animation]</th>                     <td>  -44.5544</td> <td>   12.852</td> <td>   -3.467</td> <td> 0.001</td> <td>  -69.809   -19.300</td>
+  <th>genre[T.Animation]</th>              <td>  -45.3909</td> <td>   10.695</td> <td>   -4.244</td> <td> 0.000</td> <td>  -66.411   -24.371</td>
 </tr>
 <tr>
-  <th>genre[T.Comedy]</th>                        <td>    3.2431</td> <td>    9.621</td> <td>    0.337</td> <td> 0.736</td> <td>  -15.663    22.149</td>
+  <th>genre[T.Comedy]</th>                 <td>   -2.5684</td> <td>    7.878</td> <td>   -0.326</td> <td> 0.745</td> <td>  -18.053    12.916</td>
 </tr>
 <tr>
-  <th>genre[T.Concert]</th>                       <td>   20.2212</td> <td>   43.497</td> <td>    0.465</td> <td> 0.642</td> <td>  -65.249   105.691</td>
+  <th>genre[T.Concert]</th>                <td>   21.3398</td> <td>   35.130</td> <td>    0.607</td> <td> 0.544</td> <td>  -47.705    90.384</td>
 </tr>
 <tr>
-  <th>genre[T.Crime]</th>                         <td>  -16.0071</td> <td>   19.976</td> <td>   -0.801</td> <td> 0.423</td> <td>  -55.259    23.245</td>
+  <th>genre[T.Crime]</th>                  <td>  -29.9458</td> <td>   16.635</td> <td>   -1.800</td> <td> 0.073</td> <td>  -62.641     2.749</td>
 </tr>
 <tr>
-  <th>genre[T.Documentary]</th>                   <td>    4.1127</td> <td>   36.077</td> <td>    0.114</td> <td> 0.909</td> <td>  -66.777    75.002</td>
+  <th>genre[T.Documentary]</th>            <td>   -7.3785</td> <td>   29.160</td> <td>   -0.253</td> <td> 0.800</td> <td>  -64.690    49.933</td>
 </tr>
 <tr>
-  <th>genre[T.Drama]</th>                         <td>  -12.9652</td> <td>   11.214</td> <td>   -1.156</td> <td> 0.248</td> <td>  -35.001     9.070</td>
+  <th>genre[T.Drama]</th>                  <td>  -28.3923</td> <td>    9.744</td> <td>   -2.914</td> <td> 0.004</td> <td>  -47.544    -9.241</td>
 </tr>
 <tr>
-  <th>genre[T.Family]</th>                        <td>  -58.5014</td> <td>   19.587</td> <td>   -2.987</td> <td> 0.003</td> <td>  -96.988   -20.014</td>
+  <th>genre[T.Family]</th>                 <td>  -58.1201</td> <td>   15.870</td> <td>   -3.662</td> <td> 0.000</td> <td>  -89.311   -26.929</td>
 </tr>
 <tr>
-  <th>genre[T.Fantasy]</th>                       <td>  -66.7273</td> <td>   19.193</td> <td>   -3.477</td> <td> 0.001</td> <td> -104.441   -29.014</td>
+  <th>genre[T.Fantasy]</th>                <td>  -57.9205</td> <td>   15.583</td> <td>   -3.717</td> <td> 0.000</td> <td>  -88.548   -27.293</td>
 </tr>
 <tr>
-  <th>genre[T.Foreign]</th>                       <td>  -16.8291</td> <td>   37.312</td> <td>   -0.451</td> <td> 0.652</td> <td>  -90.145    56.487</td>
+  <th>genre[T.Foreign]</th>                <td>  1.51e-12</td> <td> 6.07e-12</td> <td>    0.249</td> <td> 0.804</td> <td>-1.04e-11  1.34e-11</td>
 </tr>
 <tr>
-  <th>genre[T.Historical]</th>                    <td>   -5.9562</td> <td>   38.119</td> <td>   -0.156</td> <td> 0.876</td> <td>  -80.859    68.947</td>
+  <th>genre[T.Historical]</th>             <td>  -37.4726</td> <td>   37.562</td> <td>   -0.998</td> <td> 0.319</td> <td> -111.297    36.352</td>
 </tr>
 <tr>
-  <th>genre[T.Horror]</th>                        <td>    1.2068</td> <td>   13.505</td> <td>    0.089</td> <td> 0.929</td> <td>  -25.331    27.744</td>
+  <th>genre[T.Horror]</th>                 <td>   -3.2068</td> <td>   10.970</td> <td>   -0.292</td> <td> 0.770</td> <td>  -24.767    18.354</td>
 </tr>
 <tr>
-  <th>genre[T.Music]</th>                         <td>    0.8918</td> <td>   43.633</td> <td>    0.020</td> <td> 0.984</td> <td>  -84.846    86.630</td>
+  <th>genre[T.Music]</th>                  <td>   -3.8448</td> <td>   35.104</td> <td>   -0.110</td> <td> 0.913</td> <td>  -72.838    65.149</td>
 </tr>
 <tr>
-  <th>genre[T.Musical]</th>                       <td>   -3.8105</td> <td>   23.191</td> <td>   -0.164</td> <td> 0.870</td> <td>  -49.380    41.759</td>
+  <th>genre[T.Musical]</th>                <td>  -11.9452</td> <td>   18.679</td> <td>   -0.639</td> <td> 0.523</td> <td>  -48.657    24.766</td>
 </tr>
 <tr>
-  <th>genre[T.Period]</th>                        <td>  -45.7743</td> <td>   31.435</td> <td>   -1.456</td> <td> 0.146</td> <td> -107.542    15.993</td>
+  <th>genre[T.Period]</th>                 <td>  -34.6014</td> <td>   25.515</td> <td>   -1.356</td> <td> 0.176</td> <td>  -84.748    15.545</td>
 </tr>
 <tr>
-  <th>genre[T.Romance]</th>                       <td>   38.3183</td> <td>   21.992</td> <td>    1.742</td> <td> 0.082</td> <td>   -4.895    81.532</td>
+  <th>genre[T.Romance]</th>                <td>   34.5790</td> <td>   17.948</td> <td>    1.927</td> <td> 0.055</td> <td>   -0.696    69.854</td>
 </tr>
 <tr>
-  <th>genre[T.Romantic]</th>                      <td>  -34.1531</td> <td>   21.213</td> <td>   -1.610</td> <td> 0.108</td> <td>  -75.835     7.529</td>
+  <th>genre[T.Romantic]</th>               <td>  -29.3192</td> <td>   17.818</td> <td>   -1.646</td> <td> 0.101</td> <td>  -64.338     5.700</td>
 </tr>
 <tr>
-  <th>genre[T.Sci-Fi]</th>                        <td>  -24.5098</td> <td>   11.451</td> <td>   -2.140</td> <td> 0.033</td> <td>  -47.010    -2.010</td>
+  <th>genre[T.Sci-Fi]</th>                 <td>  -32.0882</td> <td>    9.554</td> <td>   -3.359</td> <td> 0.001</td> <td>  -50.865   -13.312</td>
 </tr>
 <tr>
-  <th>genre[T.Sports]</th>                        <td>  -31.4270</td> <td>   26.227</td> <td>   -1.198</td> <td> 0.231</td> <td>  -82.961    20.107</td>
+  <th>genre[T.Sports]</th>                 <td>  -33.5964</td> <td>   21.199</td> <td>   -1.585</td> <td> 0.114</td> <td>  -75.261     8.068</td>
 </tr>
 <tr>
-  <th>genre[T.Thriller]</th>                      <td>   -4.6661</td> <td>   13.712</td> <td>   -0.340</td> <td> 0.734</td> <td>  -31.609    22.277</td>
+  <th>genre[T.Thriller]</th>               <td>   -5.6373</td> <td>   11.267</td> <td>   -0.500</td> <td> 0.617</td> <td>  -27.781    16.506</td>
 </tr>
 <tr>
-  <th>genre[T.War]</th>                           <td>  -34.7196</td> <td>   31.008</td> <td>   -1.120</td> <td> 0.263</td> <td>  -95.650    26.211</td>
+  <th>genre[T.War]</th>                    <td>  -21.8834</td> <td>   28.434</td> <td>   -0.770</td> <td> 0.442</td> <td>  -77.767    34.000</td>
 </tr>
 <tr>
-  <th>genre[T.Western]</th>                       <td>  -63.4269</td> <td>   36.542</td> <td>   -1.736</td> <td> 0.083</td> <td> -135.231     8.377</td>
+  <th>genre[T.Western]</th>                <td>  -60.3573</td> <td>   34.873</td> <td>   -1.731</td> <td> 0.084</td> <td> -128.896     8.182</td>
 </tr>
 <tr>
-  <th>distributor[T.Anchor Bay Films]</th>        <td>   58.8934</td> <td>   65.168</td> <td>    0.904</td> <td> 0.367</td> <td>  -69.159   186.946</td>
+  <th>distributor[T.Anchor]</th>           <td>   96.2259</td> <td>   67.447</td> <td>    1.427</td> <td> 0.154</td> <td>  -36.334   228.786</td>
 </tr>
 <tr>
-  <th>distributor[T.Bleecker Street]</th>         <td>   36.9227</td> <td>   65.024</td> <td>    0.568</td> <td> 0.570</td> <td>  -90.848   164.693</td>
+  <th>distributor[T.Buena]</th>            <td>   76.5819</td> <td>   48.572</td> <td>    1.577</td> <td> 0.116</td> <td>  -18.881   172.044</td>
 </tr>
 <tr>
-  <th>distributor[T.Broad Green Pictures]</th>    <td>   37.6348</td> <td>   65.130</td> <td>    0.578</td> <td> 0.564</td> <td>  -90.343   165.613</td>
+  <th>distributor[T.CBS]</th>              <td>   94.1578</td> <td>   51.077</td> <td>    1.843</td> <td> 0.066</td> <td>   -6.229   194.544</td>
 </tr>
 <tr>
-  <th>distributor[T.Buena Vista]</th>             <td>   61.2590</td> <td>   28.917</td> <td>    2.118</td> <td> 0.035</td> <td>    4.438   118.080</td>
+  <th>distributor[T.FilmDistrict]</th>     <td>   67.6167</td> <td>   50.231</td> <td>    1.346</td> <td> 0.179</td> <td>  -31.107   166.340</td>
 </tr>
 <tr>
-  <th>distributor[T.CBS Films]</th>               <td>   58.6016</td> <td>   35.108</td> <td>    1.669</td> <td> 0.096</td> <td>  -10.383   127.587</td>
+  <th>distributor[T.Focus]</th>            <td>   78.3083</td> <td>   49.397</td> <td>    1.585</td> <td> 0.114</td> <td>  -18.776   175.392</td>
 </tr>
 <tr>
-  <th>distributor[T.Clarius Entertainment]</th>   <td> 2.817e-13</td> <td> 1.84e-13</td> <td>    1.533</td> <td> 0.126</td> <td>-7.93e-14  6.43e-13</td>
+  <th>distributor[T.Fox]</th>              <td>   53.7284</td> <td>   48.037</td> <td>    1.118</td> <td> 0.264</td> <td>  -40.684   148.141</td>
 </tr>
 <tr>
-  <th>distributor[T.FilmDistrict]</th>            <td>   32.1628</td> <td>   33.525</td> <td>    0.959</td> <td> 0.338</td> <td>  -33.712    98.037</td>
+  <th>distributor[T.Freestyle]</th>        <td>   67.2104</td> <td>   58.235</td> <td>    1.154</td> <td> 0.249</td> <td>  -47.245   181.666</td>
 </tr>
 <tr>
-  <th>distributor[T.Focus Features]</th>          <td>   28.9736</td> <td>   30.148</td> <td>    0.961</td> <td> 0.337</td> <td>  -30.266    88.214</td>
+  <th>distributor[T.High]</th>             <td>  102.4357</td> <td>   67.691</td> <td>    1.513</td> <td> 0.131</td> <td>  -30.603   235.475</td>
 </tr>
 <tr>
-  <th>distributor[T.Fox]</th>                     <td>   17.1631</td> <td>   28.000</td> <td>    0.613</td> <td> 0.540</td> <td>  -37.857    72.183</td>
+  <th>distributor[T.Kenn]</th>             <td>  143.8768</td> <td>   68.879</td> <td>    2.089</td> <td> 0.037</td> <td>    8.502   279.252</td>
 </tr>
 <tr>
-  <th>distributor[T.Fox Searchlight]</th>         <td>  -30.8096</td> <td>   33.303</td> <td>   -0.925</td> <td> 0.355</td> <td>  -96.250    34.630</td>
+  <th>distributor[T.Lionsgate]</th>        <td>  108.8687</td> <td>   48.928</td> <td>    2.225</td> <td> 0.027</td> <td>   12.706   205.031</td>
 </tr>
 <tr>
-  <th>distributor[T.Freestyle Releasing]</th>     <td>   35.0142</td> <td>   49.395</td> <td>    0.709</td> <td> 0.479</td> <td>  -62.046   132.074</td>
+  <th>distributor[T.Lionsgate/Summit]</th> <td>   75.2624</td> <td>   49.480</td> <td>    1.521</td> <td> 0.129</td> <td>  -21.985   172.509</td>
 </tr>
 <tr>
-  <th>distributor[T.High Top Releasing]</th>      <td>   63.8457</td> <td>   65.739</td> <td>    0.971</td> <td> 0.332</td> <td>  -65.329   193.020</td>
+  <th>distributor[T.Newmarket]</th>        <td>   99.0193</td> <td>   67.777</td> <td>    1.461</td> <td> 0.145</td> <td>  -34.188   232.227</td>
 </tr>
 <tr>
-  <th>distributor[T.IFC]</th>                     <td> -125.8740</td> <td>   65.198</td> <td>   -1.931</td> <td> 0.054</td> <td> -253.986     2.238</td>
+  <th>distributor[T.Open]</th>             <td>   89.6278</td> <td>   49.471</td> <td>    1.812</td> <td> 0.071</td> <td>   -7.602   186.857</td>
 </tr>
 <tr>
-  <th>distributor[T.Kenn Viselman Presents]</th>  <td>  103.2165</td> <td>   67.100</td> <td>    1.538</td> <td> 0.125</td> <td>  -28.633   235.066</td>
+  <th>distributor[T.Oscilloscope]</th>     <td>   26.8523</td> <td>   74.719</td> <td>    0.359</td> <td> 0.719</td> <td> -120.000   173.704</td>
 </tr>
 <tr>
-  <th>distributor[T.Lionsgate]</th>               <td>   68.5659</td> <td>   29.546</td> <td>    2.321</td> <td> 0.021</td> <td>   10.510   126.622</td>
+  <th>distributor[T.Paramount]</th>        <td>  100.9108</td> <td>   48.430</td> <td>    2.084</td> <td> 0.038</td> <td>    5.726   196.096</td>
 </tr>
 <tr>
-  <th>distributor[T.Lionsgate/Summit]</th>        <td>   34.2091</td> <td>   31.329</td> <td>    1.092</td> <td> 0.275</td> <td>  -27.351    95.769</td>
+  <th>distributor[T.Picturehouse]</th>     <td>  128.8769</td> <td>   67.880</td> <td>    1.899</td> <td> 0.058</td> <td>   -4.535   262.288</td>
 </tr>
 <tr>
-  <th>distributor[T.Newmarket]</th>               <td>   44.9943</td> <td>   64.713</td> <td>    0.695</td> <td> 0.487</td> <td>  -82.164   172.153</td>
+  <th>distributor[T.Quaker]</th>           <td>  113.6918</td> <td>   69.872</td> <td>    1.627</td> <td> 0.104</td> <td>  -23.635   251.019</td>
 </tr>
 <tr>
-  <th>distributor[T.Open Road Films]</th>         <td>   52.4708</td> <td>   31.188</td> <td>    1.682</td> <td> 0.093</td> <td>   -8.813   113.755</td>
+  <th>distributor[T.Relativity]</th>       <td>   57.7786</td> <td>   48.805</td> <td>    1.184</td> <td> 0.237</td> <td>  -38.143   153.700</td>
 </tr>
 <tr>
-  <th>distributor[T.Oscilloscope Pictures]</th>   <td>    7.3349</td> <td>   73.405</td> <td>    0.100</td> <td> 0.920</td> <td> -136.903   151.573</td>
+  <th>distributor[T.Roadside]</th>         <td>   -1.0096</td> <td>   56.210</td> <td>   -0.018</td> <td> 0.986</td> <td> -111.484   109.464</td>
 </tr>
 <tr>
-  <th>distributor[T.Paramount]</th>               <td>   52.7879</td> <td>   28.443</td> <td>    1.856</td> <td> 0.064</td> <td>   -3.102   108.678</td>
+  <th>distributor[T.Rocky]</th>            <td>  114.4861</td> <td>   67.685</td> <td>    1.691</td> <td> 0.091</td> <td>  -18.541   247.513</td>
 </tr>
 <tr>
-  <th>distributor[T.Paramount (DreamWorks)]</th>  <td>   62.9789</td> <td>   37.145</td> <td>    1.695</td> <td> 0.091</td> <td>  -10.009   135.967</td>
+  <th>distributor[T.STX]</th>              <td>   86.0035</td> <td>   58.745</td> <td>    1.464</td> <td> 0.144</td> <td>  -29.455   201.462</td>
 </tr>
 <tr>
-  <th>distributor[T.Picturehouse (II)]</th>       <td>   76.2690</td> <td>   64.835</td> <td>    1.176</td> <td> 0.240</td> <td>  -51.129   203.667</td>
+  <th>distributor[T.Samuel]</th>           <td>  110.7378</td> <td>   58.974</td> <td>    1.878</td> <td> 0.061</td> <td>   -5.170   226.645</td>
 </tr>
 <tr>
-  <th>distributor[T.Quaker Media]</th>            <td>   76.1058</td> <td>   68.762</td> <td>    1.107</td> <td> 0.269</td> <td>  -59.008   211.220</td>
+  <th>distributor[T.Sony]</th>             <td>   77.4993</td> <td>   48.205</td> <td>    1.608</td> <td> 0.109</td> <td>  -17.243   172.242</td>
 </tr>
 <tr>
-  <th>distributor[T.Relativity]</th>              <td>   24.2851</td> <td>   29.849</td> <td>    0.814</td> <td> 0.416</td> <td>  -34.368    82.938</td>
+  <th>distributor[T.Summit]</th>           <td>   95.4986</td> <td>   51.613</td> <td>    1.850</td> <td> 0.065</td> <td>   -5.942   196.939</td>
 </tr>
 <tr>
-  <th>distributor[T.Roadside Attractions]</th>    <td>  -35.3819</td> <td>   44.957</td> <td>   -0.787</td> <td> 0.432</td> <td> -123.720    52.956</td>
+  <th>distributor[T.TriStar]</th>          <td>   86.5192</td> <td>   49.387</td> <td>    1.752</td> <td> 0.080</td> <td>  -10.546   183.585</td>
 </tr>
 <tr>
-  <th>distributor[T.Rocky Mountain Pictures]</th> <td>   60.9970</td> <td>   64.688</td> <td>    0.943</td> <td> 0.346</td> <td>  -66.113   188.107</td>
+  <th>distributor[T.Universal]</th>        <td>  107.8650</td> <td>   48.402</td> <td>    2.229</td> <td> 0.026</td> <td>   12.736   202.994</td>
 </tr>
 <tr>
-  <th>distributor[T.STX Entertainment]</th>       <td>   52.4486</td> <td>   50.500</td> <td>    1.039</td> <td> 0.300</td> <td>  -46.783   151.680</td>
+  <th>distributor[T.Warner]</th>           <td>   82.0786</td> <td>   48.212</td> <td>    1.702</td> <td> 0.089</td> <td>  -12.677   176.834</td>
 </tr>
 <tr>
-  <th>distributor[T.Samuel Goldwyn]</th>          <td>   31.9182</td> <td>   44.988</td> <td>    0.709</td> <td> 0.478</td> <td>  -56.480   120.317</td>
+  <th>distributor[T.Weinstein]</th>        <td>   61.5259</td> <td>   49.112</td> <td>    1.253</td> <td> 0.211</td> <td>  -34.998   158.050</td>
 </tr>
 <tr>
-  <th>distributor[T.Sony / Columbia]</th>         <td>   39.2951</td> <td>   28.673</td> <td>    1.370</td> <td> 0.171</td> <td>  -17.047    95.637</td>
+  <th>distributor[T.Well]</th>             <td>   74.7600</td> <td>   67.182</td> <td>    1.113</td> <td> 0.266</td> <td>  -57.280   206.800</td>
 </tr>
 <tr>
-  <th>distributor[T.Sony / Screen Gems]</th>      <td>   75.7988</td> <td>   31.199</td> <td>    2.429</td> <td> 0.015</td> <td>   14.493   137.104</td>
+  <th>budget</th>                          <td>    0.6998</td> <td>    0.060</td> <td>   11.741</td> <td> 0.000</td> <td>    0.583     0.817</td>
 </tr>
 <tr>
-  <th>distributor[T.Sony Classics]</th>           <td>  -68.9076</td> <td>   35.651</td> <td>   -1.933</td> <td> 0.054</td> <td> -138.960     1.145</td>
+  <th>in_release_days</th>                 <td>    1.1263</td> <td>    0.074</td> <td>   15.178</td> <td> 0.000</td> <td>    0.980     1.272</td>
 </tr>
 <tr>
-  <th>distributor[T.Summit Entertainment]</th>    <td>   54.7580</td> <td>   35.023</td> <td>    1.563</td> <td> 0.119</td> <td>  -14.060   123.576</td>
+  <th>month_genre_density_count</th>       <td>   -4.2578</td> <td>    1.554</td> <td>   -2.739</td> <td> 0.006</td> <td>   -7.313    -1.203</td>
 </tr>
 <tr>
-  <th>distributor[T.TriStar]</th>                 <td>   51.6532</td> <td>   31.064</td> <td>    1.663</td> <td> 0.097</td> <td>   -9.386   112.692</td>
-</tr>
-<tr>
-  <th>distributor[T.Universal]</th>               <td>   65.1649</td> <td>   28.437</td> <td>    2.292</td> <td> 0.022</td> <td>    9.287   121.043</td>
-</tr>
-<tr>
-  <th>distributor[T.Warner Bros.]</th>            <td>   41.1792</td> <td>   28.124</td> <td>    1.464</td> <td> 0.144</td> <td>  -14.083    96.441</td>
-</tr>
-<tr>
-  <th>distributor[T.Warner Bros. (New Line)]</th> <td>   47.9761</td> <td>   31.175</td> <td>    1.539</td> <td> 0.124</td> <td>  -13.281   109.233</td>
-</tr>
-<tr>
-  <th>distributor[T.Weinstein / Dimension]</th>   <td>   27.1424</td> <td>   37.792</td> <td>    0.718</td> <td> 0.473</td> <td>  -47.118   101.403</td>
-</tr>
-<tr>
-  <th>distributor[T.Weinstein Company]</th>       <td>   13.8256</td> <td>   30.747</td> <td>    0.450</td> <td> 0.653</td> <td>  -46.591    74.242</td>
-</tr>
-<tr>
-  <th>distributor[T.Well Go USA]</th>             <td>   42.4388</td> <td>   65.198</td> <td>    0.651</td> <td> 0.515</td> <td>  -85.673   170.550</td>
-</tr>
-<tr>
-  <th>budget</th>                                 <td>    0.8880</td> <td>    0.074</td> <td>   12.027</td> <td> 0.000</td> <td>    0.743     1.033</td>
-</tr>
-<tr>
-  <th>in_release_days</th>                        <td>    0.9975</td> <td>    0.081</td> <td>   12.389</td> <td> 0.000</td> <td>    0.839     1.156</td>
-</tr>
-<tr>
-  <th>week_genre_density_count</th>               <td>   -1.6746</td> <td>    4.140</td> <td>   -0.405</td> <td> 0.686</td> <td>   -9.809     6.460</td>
-</tr>
-<tr>
-  <th>month_genre_density_count</th>              <td>   -4.5458</td> <td>    2.280</td> <td>   -1.994</td> <td> 0.047</td> <td>   -9.025    -0.066</td>
-</tr>
-<tr>
-  <th>week_budget_density_count</th>              <td>   -1.2606</td> <td>    3.433</td> <td>   -0.367</td> <td> 0.714</td> <td>   -8.006     5.485</td>
-</tr>
-<tr>
-  <th>month_budget_density_count</th>             <td>    0.6641</td> <td>    1.602</td> <td>    0.415</td> <td> 0.679</td> <td>   -2.483     3.811</td>
+  <th>month_budget_density_count</th>      <td>    1.4806</td> <td>    1.015</td> <td>    1.459</td> <td> 0.145</td> <td>   -0.513     3.475</td>
 </tr>
 </table>
 <table class="simpletable">
 <tr>
-  <th>Omnibus:</th>       <td>466.278</td> <th>  Durbin-Watson:     </th> <td>   1.249</td> 
+  <th>Omnibus:</th>       <td>107.660</td> <th>  Durbin-Watson:     </th> <td>   1.382</td> 
 </tr>
 <tr>
-  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td>26965.360</td>
+  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td> 468.264</td> 
 </tr>
 <tr>
-  <th>Skew:</th>          <td> 3.346</td>  <th>  Prob(JB):          </th> <td>    0.00</td> 
+  <th>Skew:</th>          <td> 0.898</td>  <th>  Prob(JB):          </th> <td>2.08e-102</td>
 </tr>
 <tr>
-  <th>Kurtosis:</th>      <td>36.868</td>  <th>  Cond. No.          </th> <td>1.69e+18</td> 
+  <th>Kurtosis:</th>      <td> 7.424</td>  <th>  Cond. No.          </th> <td>1.61e+18</td> 
 </tr>
-</table>  
+</table>
   
-The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$4-5 million. MKS recommends Metis management evaluate if a potential loss of US$5 million by releasing on schedule would materially affect their financial capacity to repay the debt.   
+The 'Month Genre Density' has a statistically significant (p>0.05) effect on domestic box office gross sales, of ~US$4-5 million for every additional "density" count. Metis recommends Luther management evaluate if the potential loss by releasing on schedule would materially affect their financial capacity to repay the debt.   
 
 ##Next Steps 
-1. Do exploratory data anlysis to: (1) adjust data filters, (2) check correlation and pair plots for directional relationship and fucntional forms  
-2. Refine model
-3. If there's time, explore other uses of the model (prediction)
+1. Revisit data filters  
+2. Do a bit more exploratory data analysis  
+3. Try different functional forms  
+4. If there's time, explore other uses of the model (prediction)
