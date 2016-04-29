@@ -26,6 +26,8 @@ OLS and elastic net regressions were evaluated. Both produced the similar R-squa
   
 Severe multillineraity was detected in the variable "max # of theaters" and square. Centering (scaling the variable by subtracting the mean) brough VIF down from over 100 to 6. The VIF of "adj. budget" is 7 and the variable is retained as a predictor since removing it will affect R-squared materially and centering the variable does not address multcollinearity. 
   
+Heteroskedasticity was detected as well, but under HC3, p-values of most coefficients increased marginally.
+
 OLS results:  
 <table class="simpletable">
 <caption>OLS Regression Results</caption>
