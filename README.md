@@ -1,7 +1,7 @@
 # Project Luther
 
 ## Situation 
-LutherFilms, a movie production company, plans to release a film in July 2016. However, they found out that there will be a number of similar movies that will be released in the same month ("density"). Luther took out a high-yield debt to fund the production and is worried that the competition might affect its box office sales and be unable to pay back the debt. The alternative is to delay the release of the film, but this would delay box office cash flows that will be used to pay the interest.
+Luther Films, a movie production company, plans to release a film in July 2016. However, they found out that there will be a number of similar movies that will be released in the same month ("density"). Luther took out a high-yield debt to fund the production and is worried that the competition might affect its box office sales and be unable to pay back the debt. The alternative is to delay the release of the film, but this would delay box office cash flows that will be used to pay the interest.
 
 The managers at Luther Films reached out to Metis, a consultancy, to help them on this issue. With a board meeting in two days, Luther managemet asked Metis to come back with a recommendation by the next day. 
 
@@ -20,15 +20,17 @@ Given the time limits (and budgetary constraints), Metis decided to scrape the w
 ## Model
 The goal is to focus on the value and statistical significance of movie density so 100% of the data is used to estimate the model. 
 ```
-adj. dom. gross =  1 + adj. budget + # days in release + max # of theaters (C) + (max # of theaters (C))^2 + density + genre + distributor + month
+dom. gross (adj. 2015)=  1 + budget (adj. 2015) + # days in release(C)  + max # of theaters (C) + (max # of theaters (C))^2 + density + genre + distributor + month
 ```
-OLS and elastic net regressions were evaluated. Both produced the similar R-squared values and p-values for the density coefficients. OLS is the chosen final model due. It is more interpretable and less biased without lost of model fit.   
-  
-Severe multillineraity was detected in the variable "max # of theaters" and square. Centering (scaling the variable by subtracting the mean) brough VIF down from over 100 to 6. The VIF of "adj. budget" is 7 and the variable is retained as a predictor since removing it will affect R-squared materially and centering the variable does not address multcollinearity. 
-  
-Heteroskedasticity was detected as well, but under HC3, p-values of most coefficients increased marginally.
+OLS and elastic net regression mdoels were evaluated. Both produced the similar R-squared values and p-values for the density coefficients. OLS is the chosen final model because, without lost of goodness of fit, it is more interpretable and less biased.   
 
-OLS results:  
+### Multicollinearity  
+Severe multicollineraity was detected in the variable "max # of theaters" and its square. Centering (scaling the variable by subtracting the mean) brough VIF down from over 100 to 6. The VIF of "adj. budget" is 7 and the variable is retained as a predictor since removing it will affect R-squared materially and centering the variable does not address multcollinearity. 
+
+### Heteroskedasticity
+Heteroskedasticity was detected as well, but under HC3, p-values of most coefficients only increased marginally. The density variable is still statistically significant.
+
+### OLS results:  
 <table class="simpletable">
 <caption>OLS Regression Results</caption>
 <tr>
@@ -190,9 +192,9 @@ OLS results:
 </tr>
 </table>  
   
-The 'Month Genre Density' has a statistically significant (p < 0.10) effect on domestic box office gross sales, of US$2.2 million. Metis recommends Luther management evaluate if a potential loss of by releasing on schedule would materially affect their financial capacity to repay the debt. On the other hand, based on the regression results Luther should consider releasing the film in June, a month earlier. Data shows that films released in June earn about US$15 million higher.
+The 'Month Genre Density' has a statistically significant (p < 0.10) effect on domestic box office gross sales, of US$2.2 million. Metis recommends Luther management evaluate if a potential loss of by releasing on schedule would materially affect their financial capacity to repay the debt. On the other hand, based on the regression results Luther should consider releasing the film in June, a month earlier. Data shows that films released in June, relative to July, earn about US$15 million higher (default/reference genre and distributor "Others").
 
 ## Other Ideas & Results  
-1. Density count based on high budget movies (budget >US$100 million) and simple density count (just the number of movies released in the same time frame) do not have a statistically significant effect on domestic box office gross
-2. Movie ratings were considered but eventually discarded because of the focus is on policy levers. Assuming that movie ratings and domestic box office gross are positively related, it would be difficult for Luther to influence ratings - the movie is already ready for release, it is what is is. It would also be improper to influence ratings in any artificial way post-release.
-3. Attempted to explore effects of movie posters on domestic box office gross. Due to the lack of "resources", poster data was scraped and reduced to three values - the average RGB values of each pixel. As expected, the RGB variables does not affect box office performance. Reducing the poster to RGB variables excludes other important aspects of the posters. But it was an interesting exercise.
+1. I have also considered density counts based on the # of high budget movies (budget >US$100 million) and simple density count (just the number of movies) released within the +/- 30 day window. Results show that these variable do not have a statistically significant effect on domestic box office gross.
+2. Movie ratings were considered but were eventually discarded because the focus of this project is on policy levers (i.e. variables that the production company/distrbutor can influence or manage). Assuming that movie ratings and domestic box office gross are positively related, it would be difficult for Luther to influence ratings - the movie is already ready for release, it is what is is. It would also be improper to influence ratings in any artificial way post-release.
+3. To explore an interesting angle to the problem, I explored if movie posters have any effects of movie posters on domestic box office gross. Maybe Metis could suggest how Luther should design their movie posters. Due to the lack of "resources" (i.e. time to do the project), I scraped movie poster images and reduced the image to three values - the average RGB values of each pixel. As expected, the RGB variables do not affect box office performance. Reducing the poster to three RGB variables throws away all the important features of movie posters, such as color transitions, character placements, etc. Nevertheless it was an interesting exercise.
